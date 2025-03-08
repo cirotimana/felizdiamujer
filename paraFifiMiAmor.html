@@ -10,8 +10,9 @@
             background-color: #ffe6f2;
             text-align: center;
             padding: 20px;
-            overflow: hidden;
+            overflow: auto;
             position: relative;
+            min-height: 100vh;
         }
 
         @keyframes pulse {
@@ -19,16 +20,11 @@
             50% { transform: scale(1.2); }
         }
 
-        .heart, .star {
+        .floating-icon {
             position: absolute;
             font-size: 30px;
             opacity: 0.8;
-            animation: floatUp 3s ease-out forwards;
-        }
-
-        @keyframes floatUp {
-            from { transform: translateY(0); opacity: 1; }
-            to { transform: translateY(-100px); opacity: 0; }
+            animation: pulse 2s infinite;
         }
 
         .card {
@@ -109,21 +105,22 @@
     </style>
 </head>
 <body>
+
     <script>
-        function createFloatingElements() {
-            setInterval(() => {
+        function createStaticElements() {
+            const numElements = 20; // Número fijo de corazones y estrellas
+            for (let i = 0; i < numElements; i++) {
                 const element = document.createElement("div");
-                element.classList.add(Math.random() > 0.5 ? "heart" : "star");
+                element.classList.add("floating-icon");
                 element.innerHTML = Math.random() > 0.5 ? "❤️" : "⭐";
                 element.style.left = `${Math.random() * 100}vw`;
+                element.style.top = `${Math.random() * 100}vh`;
                 element.style.fontSize = `${Math.random() * 40 + 20}px`;
-                element.style.animationDuration = `${Math.random() * 3 + 2}s`;
                 document.body.appendChild(element);
-                setTimeout(() => element.remove(), 3000);
-            }, 500);
+            }
         }
 
-        createFloatingElements();
+        createStaticElements();
     </script>
 
     <div class="card">
@@ -140,20 +137,5 @@
         <a href="#" class="button">💖 Te Amo más que nada en el mundo 💖</a>
     </div>
 
-    <script>
-        function emitHearts() {
-            const container = document.querySelector(".photo-container");
-            setInterval(() => {
-                const heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.innerHTML = "❤️";
-                heart.style.left = `${Math.random() * 100}%`;
-                container.appendChild(heart);
-                setTimeout(() => heart.remove(), 2000);
-            }, 500);
-        }
-
-        emitHearts();
-    </script>
 </body>
 </html>
