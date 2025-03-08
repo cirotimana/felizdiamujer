@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Mujer, Mi Amor</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .heart, .star {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.8;
+            animation: floatUp 3s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100px); opacity: 0; }
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .special-message {
+            font-size: 1.1rem;
+            color: #d81b60;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #d81b60;
+            font-size: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #d81b60;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff4081;
+            transform: scale(1.1);
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 120px;
+        }
+
+        .family-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #d81b60;
+            margin: 10px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createFloatingElements() {
+            setInterval(() => {
+                const element = document.createElement("div");
+                element.classList.add(Math.random() > 0.5 ? "heart" : "star");
+                element.innerHTML = Math.random() > 0.5 ? "❤️" : "⭐";
+                element.style.left = `${Math.random() * 100}vw`;
+                element.style.fontSize = `${Math.random() * 40 + 20}px`;
+                element.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                document.body.appendChild(element);
+                setTimeout(() => element.remove(), 3000);
+            }, 500);
+        }
+
+        createFloatingElements();
+    </script>
+
+    <div class="card">
+        <h1>Feliz Día de la Mujer, Mi Amor</h1>
+        <p>Querida Fiorella,</p>
+        <p>Hoy quiero celebrar a la mujer increíble que eres: una madre excepcional para nuestra pequeña Mia, una compañera inigualable y el amor de mi vida.</p>
+        <p>Gracias por cada sonrisa, por cada abrazo, por cada momento que haces especial con tu presencia. Eres mi inspiración y mi más grande bendición.</p>
+        <p class="special-message">¡Gracias por estos 3 meses de casados y por darme la felicidad de ser tu esposo y el papá de Mia!</p>
+        <div class="photo-container">
+            <img src="https://i.postimg.cc/Hkg8t693/471277061-2944385439064119-4492140427465222501-n.jpg" alt="Ciro, Fiorella y Mia" class="family-photo">
+            <img src="https://i.postimg.cc/156N6kwf/Captura-de-pantalla-2025-03-08-090451.jpg" alt="Ciro y Fiorella" class="family-photo">
+        </div>
+        <p class="footer">Con todo mi amor, <br> Tu esposo, Ciro 💖</p>
+        <a href="#" class="button">💖 Te Amo más que nada en el mundo 💖</a>
+    </div>
+
+    <script>
+        function emitHearts() {
+            const container = document.querySelector(".photo-container");
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = `${Math.random() * 100}%`;
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }, 500);
+        }
+
+        emitHearts();
+    </script>
+</body>
+</html>
